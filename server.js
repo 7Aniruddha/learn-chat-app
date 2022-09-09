@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=jD7FnbI76Hg
+
 const express = require('express');
 const path = require('path');
 const http = require("http");
@@ -28,6 +30,11 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         // Everyone will get the message that someone has left the chat
         io.emit('message', 'User left the chat')
+    })
+
+    // Listen for chatMessage
+    socket.on('chatMessage', msg=>{
+        console.log(msg);
     })
 })
 
